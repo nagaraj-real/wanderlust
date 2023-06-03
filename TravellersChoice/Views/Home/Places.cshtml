@@ -1,0 +1,169 @@
+﻿@model IEnumerable<TravellersChoice.Models.Place>
+
+@{
+    ViewBag.Title = "Home Page";
+    var count = 0;
+}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#searchtxt").autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "/Home/AutoCompletePlaces",
+                    type: "GET",
+                    dataType: "json",
+                    data: { term: request.term },
+                    success: function(data) {
+                        response($.map(data.Result, function (p) {
+                            return { label: p.PlaceText, value: p.PlaceValue };
+                        }));
+
+                    }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        debugger;
+                        alert(errorThrown);
+                    }
+
+                });
+            },
+            select:
+                function (event, ui) {
+                    $('#searchtxt').val(ui.item.label);
+                    location.pathname = '/Home/Place/' + ui.item.value;
+                    return false;
+                },
+            minLength: 1
+        });
+    });
+</script>
+<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for carousel items -->
+    <div class="carousel-inner">
+        <div class="active item">
+            <img src="../../Images/slide-1.jpg" alt="First Slide" class="img-responsive">
+
+        </div>
+        <div class="item">
+            <img src="../../Images/slide-2.jpg" alt="Second Slide" class="img-responsive">
+
+        </div>
+        <div class="item">
+            <img src="../../Images/slide-3.jpg" alt="Third Slide" class="img-responsive">
+
+        </div>
+    </div>
+    <!-- Carousel controls -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+
+<br />
+<br/>
+
+<div id="searchdiv">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input id="searchtxt" type="text" class="form-control" placeholder="Search for a Place">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-success disabled" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+   
+</div>
+<br/>
+<br/>
+@if(@Model.ToList().Count > 0)
+{
+<div class="destinationofmonth">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span><b>Destination of the month</b>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12"><h4>@Html.ActionLink(Model.ToList().Last().PlaceName, "Place", "Home", new { id = Model.ToList().Last().PlaceName },new{id=Model.Last().PlaceName})</h4>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <img class="img-responsive" src="~/Images/@Model.ToList().Last().PlaceImageUrl" />
+                </div>
+                <div class="clearfix visible-xs"></div>
+
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <br class="visible-xs" />
+                    <p>
+                        @Html.DisplayFor(modelItem => Model.ToList().Last().PlaceDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<br/>
+<div class="randomdestinations">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span><b>Random Destinations</b></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+
+                @foreach (var item in Model.ToList().SkipWhile((p1,p2)=>p2==(Model.ToList().Count-1)))
+                {
+
+                    count++;
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail">
+                            <img class="img-responsive" src="~/Images/@item.PlaceImageUrl"/>
+                            <div class="caption">
+                                <h5>@Html.ActionLink(@item.PlaceName, "Place", "Home", new { id =@item.PlaceName },new{id=@item.PlaceName})</h5>
+                                <p>
+                                    @{
+                                        for (int i = 1; i <= @item.PlaceAvgRating; i++)
+                                        {
+                                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                        }
+                                        for (int i = @item.PlaceAvgRating + 1; i <= 5; i++)
+                                        {
+                                            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                                        }
+
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="visible-xs"><br /></div>
+                    if (count % 2 == 0)
+                    {
+                        <div class="visible-sm"><br/></div>
+                    }
+                    if (count % 3 == 0)
+                    {
+                        <div class="visible-md"><br /></div>
+                    }
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>

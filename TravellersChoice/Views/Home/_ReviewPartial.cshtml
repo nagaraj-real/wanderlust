@@ -1,0 +1,44 @@
+﻿@model TravellersChoice.Models.Review
+
+
+
+                <div class="reviewdiv">
+                    <div class="thumbnail">
+                        <div class="reviewtext">
+                            <p>@Model.ReviewDesc</p>
+                            <a data-toggle="modal" data-target="#modelreadmore" title="read more" class="readmore" onclick="return readmoreclick(this);">Read more »</a>
+                        </div>
+
+                        <div class="caption">
+                            <h5>
+                              
+                                    @if (ViewContext.Controller.ViewBag.Title == "Profile")
+                                    {
+                                        @Html.ActionLink(Model.Place.PlaceName, "Place", "Home", new { id = Model.Place.PlaceName }, new { id = Model.Place.PlaceName })
+                                    }
+                                    else
+                                    {
+                                       @Html.ActionLink(Model.User.UserProfile.UserName, "Profile", "Home", new { id = Model.User.UserProfile.UserName }, new { id = Model.User.UserProfile.UserName })
+                                    }
+                              
+
+                            </h5>
+                            <p>
+                                @{
+                                    for (int i = 1; i <= @Model.ReviewRating; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                                    }
+                                    for (int i = @Model.ReviewRating + 1; i <= 5; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                                    }
+
+                                }
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            

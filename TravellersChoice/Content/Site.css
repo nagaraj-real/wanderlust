@@ -1,0 +1,267 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+.carousel-inner  img {
+    height: 500px !important;
+    width: 100%;
+
+}
+
+@media screen and (max-width: 450px)  {
+.carousel-inner  img {
+    height: 250px !important;
+    width: 100%;
+
+}
+}
+
+@media screen and (min-width: 450px) and (max-width: 750px)  {
+.carousel-inner  img {
+    height: 350px !important;
+    width: 100%;
+
+}
+}
+
+@media screen and (min-width: 750px) and (max-width: 986px)  {
+.carousel-inner  img {
+    height: 400px !important;
+    width: 100%;
+
+}
+}
+
+div.destinationofmonth .glyphicon-fire {
+    padding: 0 1% 0 0;
+    font-size: 20px;
+    color: #F36F0E;
+}
+
+div.destinationofmonth img {
+    border: 1px solid #DAD9D9;
+    border-radius: 3px;
+}
+
+div.randomdestinations .glyphicon-th-large {
+    padding: 0 1% 0 0;
+    font-size: 20px;
+    color: #DA1414;
+}
+
+.glyphicon-heart {
+    padding: 0 1% 0 0;
+    color: red;
+}
+
+div.map .glyphicon-map-marker {
+    padding: 0 1% 0 0;
+    color: green;
+}
+
+div.placedesc img{
+    margin-top: 7px;
+}
+
+div.placedesc h4 {
+    font-size: 15px;
+    line-height: 23px;
+}
+    #map_canvas {
+        height: 500px;
+    }
+
+    
+
+    div.imageslides .glyphicon-picture {
+        padding: 0 1% 0 0;
+        color: red;
+        color: rgb(222, 0, 31);
+    }
+   
+     div.reviewslides .glyphicon-pencil {
+        padding: 0 1% 0 0;
+        color: red;
+        color: rgb(222, 0, 31);
+    }
+   
+     .reviewdiv{
+         padding: 8px;
+     }
+
+    .responsive div#images {
+    padding: 8px;
+}
+    img.img-responsive.imgplace {
+    height: 220px;
+    width: 100%;
+}
+     .reviewtext {
+         height: 200px;
+         padding: 10px;
+     }
+
+     .reviewtext a {
+         cursor: pointer;
+     }
+
+     .register .control-label {
+         width: 100%;
+     }
+
+     .form-horizontal .form-group {
+         margin-left: 0 !important;
+         margin-right: 0 !important;
+     }
+
+     .navbar-brand {
+    font-size: 29px;
+    font-style: italic;
+    color: #f36f0e !important;
+    font-family: 'Playball', cursive;
+     }
+
+     .glyphicon-user {
+         padding: 0 1% 0 0;
+         color: #4C7C9E;
+
+     }
+     .btn-add-circle {
+ width: 40px;
+ height: 40px;
+ padding: 0px 10px;
+ font-size: 20px;
+ line-height: 1.33;
+ border-radius: 25px;
+ float: right;
+ margin-top: -10px;
+ margin-right: 10px;
+ color: white;
+ background-color: #00C6F3;
+ border-color: #00C6F3;
+}
+
+ .btn-add-circle:hover,.btn-add-circle:active, .btn-add-circle:focus{
+         color: #00C6F3;
+         background-color: white;
+         outline: none;
+         border-color: #00C6F3;
+ }
+
+ .btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.fileformatalert,.statusalert{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+textarea#reviewtext {
+    max-width: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+.form-profile {
+    padding: 40px;
+    color: #676767;
+    text-align: center;
+}
+
+.form-profile a {
+    text-decoration: none;
+    padding-right: 4px;
+}
+
+.profimg {
+    height: 200px;
+    width: 200px;
+    margin: auto;
+}
+
+.btnuploadprof {
+    margin: auto;
+    width: 200px;
+}
+
+
+
+.form-place .form-group label{
+    font-size: 14px;
+    padding-right: 4px;
+}
+
+.form-place .form-group span {
+    font-size: 15px;
+}
+
+.form-place .form-group {
+    margin-bottom: 0;
+}
+
+.form-place .glyphicon {
+    padding: 0;
+}
+
+.form-place a {
+    text-decoration: none;
+    padding-right: 15px;
+}
+
+#searchdiv input{
+    max-width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    #searchdiv input {
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+    }
+
+  #searchdiv .btn {
+      width: 50px;
+    height: 45px;
+    font-size: 20px;
+    }
+   
+}

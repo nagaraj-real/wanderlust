@@ -1,0 +1,25 @@
+﻿@model TravellersChoice.Models.Image
+
+
+                <div id="images">
+                    <div class="thumbnail">
+                        <div>
+                            <img class="img-responsive imgplace" src="@Model.ImageUrl" />
+                        </div>
+                        <div class="caption">
+                            <h5>
+                                   
+                                        @if (ViewContext.Controller.ViewBag.Title == "Profile")
+                                        {
+                                            @Html.ActionLink(Model.Place.PlaceName, "Place", "Home", new { id = Model.Place.PlaceName }, new { id = Model.Place.PlaceName })
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink(Model.User.UserProfile.UserName, "Profile", "Home", new { id = Model.User.UserProfile.UserName }, new { id = Model.User.UserProfile.UserName })
+                                        }
+                                  
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+           
